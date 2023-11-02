@@ -1,3 +1,4 @@
+#Q.1 Python program to create a dictionary that count the frequency of words in the string given in Q1.txt. Find the most frequent occured word.
 with open("Q1.txt", "r") as file1:
     content = file1.read()
 
@@ -21,3 +22,26 @@ for word, count in word_frequency.items():
         most_frequent_count = count
 
 print("The most frequent word is '{}' which has a frequency of {}.".format(most_frequent_word, most_frequent_count))
+
+
+#Q.2 Write a Python program to read the name from Q2.txt and create email using domain 'parami.edu.mm' and save the results as dictionary : {'name': 'name@parami.edu.mm'}. Please take note that your email should not include space or any special characters and all charcters should be in lowercase.
+with open('Q2.txt', 'r') as names:
+    header = names.readline()
+    namelist = names.readlines()
+
+def list_emails(name_list, domain):
+    email_dic = {}
+
+    for name in name_list:
+        clean_name = name.strip().lower()
+        final_name = clean_name.replace(' ', '') + "@" + domain
+
+        email_dic[name.strip()] = final_name
+
+    return email_dic
+
+domain = "parami.edu.mm"
+email_name = list_emails(namelist, domain)
+
+for name, email in email_name.items():
+    print("This is your name - {} : This is your Parami Email {}".format(name, email))
